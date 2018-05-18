@@ -1,0 +1,76 @@
+{
+    "id": "https://schema.linterhub.com/deps.json",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "This schema describes the linter dependencies",
+    "description": "The engine dependencies",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The linter id"
+        },
+        "name": {
+            "type": "string",
+            "description": "The linter name"
+        },
+        "dependencies": {
+            "type": "array",
+            "description": "The linter dependencies",
+            "items": {
+                "$ref": "#/definitions/dependencies"
+            }
+        }
+    },
+    "required": [
+        "name",
+        "dependencies"
+    ],
+    "additionalItems": false,
+    "definitions": {
+        "dependencies": {
+            "type": "array",
+            "description": "The linter requirements",
+            "items": {
+                "$ref": "#/definitions/requirement"
+            }
+        },
+        "requirement": {
+            "type": "object",
+            "description": "The linter dependencies",
+            "properties": {
+                "manager": {
+                    "type": "string",
+                    "description": "The manager for dependency",
+                    "$ref": "#/definitions/manager"
+                },
+                "package": {
+                    "type": "string",
+                    "description": "The package name"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The package version"
+                },
+                "linter": {
+                    "type": "boolean",
+                    "description": "The flag indicating whether it's linter itself",
+                    "default": false
+                }
+            },
+            "required": [
+                "manager",
+                "package"
+            ],
+            "additionalProperties": false
+        },
+        "manager": {
+            "type": "string",
+            "description": "The package manager",
+            "oneOf": [
+                {
+                    "$ref": "https://schema.linterhub.com/platform.json"
+                }
+            ]
+        }
+    }
+}

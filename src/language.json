@@ -1,0 +1,14 @@
+{
+    "id": "https://schema.linterhub.com/language.json",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "This schema describes programming languages and extensions",
+    "description": "The list of programming languages and extensions",
+    "oneOf": [
+        {
+            "$ref": "https://schema.linterhub.com/language.custom.json"
+        },
+        {
+            "$ref": "https://schema.linterhub.com/language.linguist.json"
+        }
+    ]
+}
