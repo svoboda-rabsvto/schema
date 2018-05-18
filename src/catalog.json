@@ -1,0 +1,35 @@
+{
+    "id": "https://schema.linterhub.com/catalog.json",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "This schema describes the catalog of linters",
+    "description": "The linterhub catalog",
+    "type": "object",
+    "properties": {
+        "linters":{
+            "type": "array",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/item"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "item": {
+            "type": "object",
+            "$ref": "https://schema.linterhub.com/meta.json",
+            "description": "The item in a catalog that describes the linter",
+            "properties": {
+                "package": {
+                    "type": "string",
+                    "description": "The url to linter in package manager"
+                }
+            },
+            "required": [
+                "package",
+                "name",
+                "languages"
+            ]
+        }
+    }
+}
