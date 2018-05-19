@@ -1,5 +1,6 @@
 {
-	"$schema" : "http://json-schema.org/draft-04/schema",
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"$version": "1.0.0",
 	"id": "https://schema.linterhub.com/schema.json",
 	"description": "Meta-schema for versioned JSON schema",
 	"allOf": [
@@ -8,12 +9,14 @@
 		},
 		{
 			"properties": {
-                "$version": {
-                    "type": "string",
-                    "pattern": "^[0-9]+.[0-9]+.[0-9]+$"
-                }
+				"$version": {
+					"type": "string",
+					"pattern": "^[0-9]+.[0-9]+.[0-9]+$"
+				}
 			},
-			"required": [ "version" ]
+			"required": [
+				"$version"
+			]
 		}
 	]
 }
