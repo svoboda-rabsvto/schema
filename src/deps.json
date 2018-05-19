@@ -1,76 +1,102 @@
 {
+    "$schema": "https://schema.linterhub.com/schema.json",
+    "$version": "1.0.0",
     "id": "https://schema.linterhub.com/deps.json",
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "This schema describes the linter dependencies",
-    "description": "The engine dependencies",
+    "title": "Linter Dependencies",
+    "description": "The schema of linter dependencies",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
-            "description": "The linter id"
+            "title": "Id",
+            "description": "The URI to the latest version of this file",
+            "format": "uri"
         },
         "name": {
             "type": "string",
-            "description": "The linter name"
+            "title": "Name",
+            "description": "The original and unique name of the linter"
         },
         "dependencies": {
             "type": "array",
-            "description": "The linter dependencies",
+            "title": "Dependencies",
+            "description": "The array of linter dependencies, where each dependency is an array of required packages",
             "items": {
-                "$ref": "#/definitions/dependencies"
-            }
+                "$ref": "#/definitions/dependency"
+            },
+            "minItems": 1,
+            "uniqueItems": true
         }
     },
     "required": [
+        "id",
         "name",
         "dependencies"
     ],
     "additionalItems": false,
     "definitions": {
-        "dependencies": {
-            "type": "array",
-            "description": "The linter requirements",
-            "items": {
-                "$ref": "#/definitions/requirement"
+        "internal": {
+            "type": "object",
+            "title": "Internal definitions",
+            "description": "The set of complex types for the current schema",
+            "properties": {
+                "dependency": {
+                    "type": "array",
+                    "title": "Dependency",
+                    "description": "The array of required packages",
+                    "items": {
+                        "$ref": "#/definitions/package"
+                    },
+                    "minLength": 1,
+                    "uniqueItems": true
+                },
+                "package": {
+                    "type": "object",
+                    "title": "Package",
+                    "description": "The definition of package",
+                    "properties": {
+                        "manager": {
+                            "type": "string",
+                            "title": "Package manager",
+                            "description": "The package manager name",
+                            "$ref": "https://schema.linterhub.com/manager.json"
+                        },
+                        "package": {
+                            "type": "string",
+                            "title": "Package",
+                            "description": "The package name"
+                        },
+                        "version": {
+                            "type": "string",
+                            "title": "Version",
+                            "description": "The package version"
+                        },
+                        "target": {
+                            "type": "boolean",
+                            "title": "Target",
+                            "description": "The flag indicating whether the package is the linter itself",
+                            "default": false
+                        }
+                    },
+                    "required": [
+                        "manager",
+                        "package"
+                    ],
+                    "additionalProperties": false
+                }  
             }
         },
-        "requirement": {
+        "external": {
             "type": "object",
-            "description": "The linter dependencies",
+            "title": "External definitions",
             "properties": {
                 "manager": {
                     "type": "string",
-                    "description": "The manager for dependency",
-                    "$ref": "#/definitions/manager"
-                },
-                "package": {
-                    "type": "string",
-                    "description": "The package name"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "The package version"
-                },
-                "linter": {
-                    "type": "boolean",
-                    "description": "The flag indicating whether it's linter itself",
-                    "default": false
+                    "title": "Package manager",
+                    "description": "The package manager name",
+                    "$ref": "https://schema.linterhub.com/manager.json"
                 }
-            },
-            "required": [
-                "manager",
-                "package"
-            ],
-            "additionalProperties": false
-        },
-        "manager": {
-            "type": "string",
-            "description": "The package manager",
-            "oneOf": [
-                {
-                    "$ref": "https://schema.linterhub.com/platform.json"
-                }
-            ]
+            }
         }
     }
 }

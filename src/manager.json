@@ -1,5 +1,5 @@
 {
-    "id": "https://schema.linterhub.com/platform.json",
+    "id": "https://schema.linterhub.com/manager.json",
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "This schema describes the name of dependency or package manager",
     "description": "The name of manager",

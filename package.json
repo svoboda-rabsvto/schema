@@ -1,0 +1,19 @@
+{
+  "name": "linterhub",
+  "version": "1.0.0",
+  "description": "hub of linters",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linterhub/schema.git"
+  },
+  "author": "linterhub",
+  "license": "MIT",
+  "homepage": "https://linterhub.com",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "semantic-release": "^15.4.1"
+  }
+}
