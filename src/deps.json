@@ -22,7 +22,7 @@
             "title": "Dependencies",
             "description": "The array of linter dependencies, where each dependency is an array of required packages",
             "items": {
-                "$ref": "#/definitions/dependency"
+                "$ref": "#/definitions/internal/properties/dependency"
             },
             "minItems": 1,
             "uniqueItems": true
@@ -38,14 +38,14 @@
         "internal": {
             "type": "object",
             "title": "Internal definitions",
-            "description": "The set of complex types for the current schema",
+            "description": "The set of internal types",
             "properties": {
                 "dependency": {
                     "type": "array",
                     "title": "Dependency",
                     "description": "The array of required packages",
                     "items": {
-                        "$ref": "#/definitions/package"
+                        "$ref": "#/definitions/internal/properties/package"
                     },
                     "minLength": 1,
                     "uniqueItems": true
@@ -59,7 +59,7 @@
                             "type": "string",
                             "title": "Package manager",
                             "description": "The package manager name",
-                            "$ref": "https://schema.linterhub.com/manager.json"
+                            "$ref": "#/definitions/external/properties/manager"
                         },
                         "package": {
                             "type": "string",
@@ -89,6 +89,7 @@
         "external": {
             "type": "object",
             "title": "External definitions",
+            "description": "The set of external types",
             "properties": {
                 "manager": {
                     "type": "string",
