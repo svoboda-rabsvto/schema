@@ -1,5 +1,12 @@
 var gulp = require('gulp');
 
+gulp.task('static', function() {
+    var stream = gulp
+        .src('CNAME')
+        .pipe(gulp.dest('build'));
+    return stream;
+})
+
 gulp.task('build', function() {
     var stream = gulp
         .src('src/*.json')
@@ -7,4 +14,4 @@ gulp.task('build', function() {
     return stream;
 })
 
-gulp.task('default', ['build']);
+gulp.task('default', ['static', 'build']);
