@@ -1,6 +1,5 @@
 var path = require('path'),
     gulp = require('gulp'),
-    subdirRename = require('gulp-subdir-rename'),
     jsonFormat = require('gulp-json-format');
 
 gulp.task('format', function() {
