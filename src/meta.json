@@ -1,25 +1,16 @@
 {
+    "$schema": "https://schema.linterhub.com/schema.json",
+    "$version": "1.0.0",
     "id": "https://schema.linterhub.com/meta.json",
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "This schema describes the linter definition",
-    "description": "The meta information of linter",
     "type": "object",
+    "title": "Linter Metainformation",
+    "description": "The schema of linter meta information",
     "properties": {
         "id": {
             "type": "string",
-            "description": "The linter id, used only when the linter name is not unique",
-            "default": ""
-        },
-        "name": {
-            "type": "string",
-            "description": "The linter official name, may not be unique"
-        },
-        "alias": {
-            "type": "array",
-            "description": "List of linter aliases.",
-            "items": {
-                "type": "string"
-            }
+            "title": "Id",
+            "description": "The URI to the latest version of this file",
+            "format": "uri"
         },
         "description": {
             "type": "string",
@@ -86,7 +77,7 @@
                     ]
                 },
                 {
-                    "$ref": "https://schema.linterhub.com/license.json"
+                    "$ref": "https://schema.linterhub.com/enum/license.json"
                 }
             ]
         },
@@ -101,7 +92,7 @@
                     ]
                 },
                 {
-                    "$ref": "https://schema.linterhub.com/language.json"
+                    "$ref": "https://schema.linterhub.com/enum/language.json"
                 }
             ]
         },

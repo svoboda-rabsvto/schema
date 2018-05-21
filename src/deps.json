@@ -12,17 +12,12 @@
             "description": "The URI to the latest version of this file",
             "format": "uri"
         },
-        "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "The original and unique name of the linter"
-        },
         "dependencies": {
             "type": "array",
             "title": "Dependencies",
             "description": "The array of linter dependencies, where each dependency is an array of required packages",
             "items": {
-                "$ref": "#/definitions/internal/properties/dependency"
+                "$ref": "#/definitions/dependency"
             },
             "minItems": 1,
             "uniqueItems": true
@@ -35,69 +30,49 @@
     ],
     "additionalItems": false,
     "definitions": {
-        "internal": {
-            "type": "object",
-            "title": "Internal definitions",
-            "description": "The set of internal types",
-            "properties": {
-                "dependency": {
-                    "type": "array",
-                    "title": "Dependency",
-                    "description": "The array of required packages",
-                    "items": {
-                        "$ref": "#/definitions/internal/properties/package"
-                    },
-                    "minLength": 1,
-                    "uniqueItems": true
-                },
-                "package": {
-                    "type": "object",
-                    "title": "Package",
-                    "description": "The definition of package",
-                    "properties": {
-                        "manager": {
-                            "type": "string",
-                            "title": "Package manager",
-                            "description": "The package manager name",
-                            "$ref": "#/definitions/external/properties/manager"
-                        },
-                        "package": {
-                            "type": "string",
-                            "title": "Package",
-                            "description": "The package name"
-                        },
-                        "version": {
-                            "type": "string",
-                            "title": "Version",
-                            "description": "The package version"
-                        },
-                        "target": {
-                            "type": "boolean",
-                            "title": "Target",
-                            "description": "The flag indicating whether the package is the linter itself",
-                            "default": false
-                        }
-                    },
-                    "required": [
-                        "manager",
-                        "package"
-                    ],
-                    "additionalProperties": false
-                }
-            }
+        "dependency": {
+            "type": "array",
+            "title": "Dependency",
+            "description": "The array of required packages",
+            "items": {
+                "$ref": "#/definitions/package"
+            },
+            "minLength": 1,
+            "uniqueItems": true
         },
-        "external": {
+        "package": {
             "type": "object",
-            "title": "External definitions",
-            "description": "The set of external types",
+            "title": "Package",
+            "description": "The definition of package",
             "properties": {
                 "manager": {
                     "type": "string",
                     "title": "Package manager",
                     "description": "The package manager name",
-                    "$ref": "https://schema.linterhub.com/manager.json"
+                    "$ref": "./manager.json"
+                },
+                "package": {
+                    "type": "string",
+                    "title": "Package",
+                    "description": "The package name in a format specified by manager"
+                },
+                "version": {
+                    "type": "string",
+                    "title": "Version",
+                    "description": "The package version in a format specified by manager"
+                },
+                "target": {
+                    "type": "boolean",
+                    "title": "Target",
+                    "description": "The flag indicating whether the package is the linter itself",
+                    "default": false
                 }
-            }
+            },
+            "required": [
+                "manager",
+                "package"
+            ],
+            "additionalProperties": false
         }
     }
 }

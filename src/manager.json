@@ -1,9 +1,10 @@
 {
+    "$schema": "https://schema.linterhub.com/schemaver.json",
+    "$version": "1.0.0",
     "id": "https://schema.linterhub.com/manager.json",
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "This schema describes the name of dependency or package manager",
-    "description": "The name of manager",
     "type": "string",
+    "title": "Collection: Package Manager",
+    "description": "The set of names of package managers",
     "enum": [
         "os",
         "url",

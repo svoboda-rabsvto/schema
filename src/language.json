@@ -1,14 +1,15 @@
 {
+    "$schema": "https://schema.linterhub.com/schemaver.json",
+    "$version": "1.0.0",
     "id": "https://schema.linterhub.com/language.json",
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "This schema describes programming languages and extensions",
-    "description": "The list of programming languages and extensions",
+    "title": "Collection: programming language and extension",
+    "description": "The set of programming languages and associated file extensions",
     "oneOf": [
         {
-            "$ref": "https://schema.linterhub.com/language.custom.json"
+            "$ref": "./language.linter.json"
         },
         {
-            "$ref": "https://schema.linterhub.com/language.linguist.json"
+            "$ref": "./language.linguist.json"
         }
     ]
 }
