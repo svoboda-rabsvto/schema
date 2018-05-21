@@ -30,7 +30,7 @@
             "type": "array",
             "description": "The list of supported languages",
             "items": {
-                "$ref": "#/definitions/language"
+                "$ref": "./language.json"
             }
         },
         "extensions": {
@@ -42,7 +42,7 @@
                         "$ref": "#/definitions/extension"
                     },
                     {
-                        "$ref": "#/definitions/language"
+                        "$ref": "./language.json"
                     }
                 ]
             }
