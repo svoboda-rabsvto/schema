@@ -25,7 +25,6 @@
     },
     "required": [
         "id",
-        "name",
         "dependencies"
     ],
     "additionalItems": false,

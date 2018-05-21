@@ -6,7 +6,8 @@
     "description": "The set of acronyms of special software licenses",
     "type": "string",
     "enum": [
-        "Custom"
+        "Custom",
+        "Unknown"
     ],
     "additionalItems": false
 }

@@ -1,6 +1,7 @@
 var path = require('path'),
     gulp = require('gulp'),
-    jsonFormat = require('gulp-json-format');
+    jsonFormat = require('gulp-json-format'),
+    jsonSchema = require("gulp-json-schema");;
 
 gulp.task('format', function() {
     var stream = gulp
@@ -10,7 +11,43 @@ gulp.task('format', function() {
     return stream;
 });
 
-gulp.task('build', [ 'format' ], function() {
+gulp.task('validate', function() {
+    var stream = gulp
+        .src('src/*.json')
+        .pipe(jsonSchema({
+            schema: 'src/schemaver.json',
+            loadMissingSchemas: true,
+            checkRecursive: true
+        }));
+    return stream;
+});
+
+gulp.task('test-deps', function() {
+    return;
+    var stream = gulp
+        .src('test/*.deps.json')
+        .pipe(jsonSchema({
+            schema: 'src/deps.json',
+            loadMissingSchemas: true,
+            checkRecursive: true
+        }));
+    return stream;
+});
+
+gulp.task('test-meta', function() {
+    return;
+    var stream = gulp
+        .src('test/*.meta.json')
+        .pipe(jsonSchema({
+            schema: 'src/meta.json',
+            loadMissingSchemas: true,
+            checkRecursive: true,
+            verbose: true
+        }));
+    return stream;
+});
+
+gulp.task('build', [ 'format', 'validate', 'test-meta', 'test-deps' ], function() {
     var stream = gulp
         .src('src/*.json')
         .pipe(jsonFormat(4))
