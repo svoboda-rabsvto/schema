@@ -1,9 +1,9 @@
 {
-    "$schema": "https://schema.linterhub.com/schema.json",
+    "$schema": "https://schema.linterhub.com/schemaver.json",
     "$version": "1.0.0",
     "id": "https://schema.linterhub.com/meta.json",
     "type": "object",
-    "title": "Linter Metainformation",
+    "title": "Linter metainformation",
     "description": "The schema of linter meta information",
     "properties": {
         "id": {
@@ -77,7 +77,7 @@
                     ]
                 },
                 {
-                    "$ref": "https://schema.linterhub.com/enum/license.json"
+                    "$ref": "./license.json"
                 }
             ]
         },
@@ -92,7 +92,7 @@
                     ]
                 },
                 {
-                    "$ref": "https://schema.linterhub.com/enum/language.json"
+                    "$ref": "./language.json"
                 }
             ]
         },

@@ -4,6 +4,7 @@
     "id": "https://schema.linterhub.com/license.json",
     "title": "Collection: software license",
     "description": "The set of acronyms of software licenses",
+    "type": "string",
     "oneOf": [
         {
             "$ref": "./license.linter.json"
