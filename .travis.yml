@@ -13,7 +13,8 @@ script:
   - npm run release
 deploy:
   provider: pages
-  skip_cleanup: true
+  skip-cleanup: true
+  keep-history: true
   github_token: $GITHUB_TOKEN
   local-dir: dist
   on:

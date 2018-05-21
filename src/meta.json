@@ -60,7 +60,7 @@
         }
     },
     "required": [
-        "name",
+        "id",
         "description",
         "license"
     ],
