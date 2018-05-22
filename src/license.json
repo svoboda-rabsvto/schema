@@ -7,10 +7,10 @@
     "type": "string",
     "oneOf": [
         {
-            "$ref": "./license.linter.json"
+            "$ref": "https://schema.linterhub.com/license.linter.json"
         },
         {
-            "$ref": "./license.spdx.json"
+            "$ref": "https://schema.linterhub.com/license.spdx.json"
         }
     ]
 }

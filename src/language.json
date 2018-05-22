@@ -6,10 +6,10 @@
     "description": "The set of programming languages and associated file extensions",
     "oneOf": [
         {
-            "$ref": "./language.linter.json"
+            "$ref": "https://schema.linterhub.com/language.linter.json"
         },
         {
-            "$ref": "./language.linguist.json"
+            "$ref": "https://schema.linterhub.com/language.linguist.json"
         }
     ]
 }

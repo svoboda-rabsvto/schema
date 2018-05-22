@@ -48,7 +48,7 @@
                     "type": "string",
                     "title": "Package manager",
                     "description": "The package manager name",
-                    "$ref": "./manager.json"
+                    "$ref": "https://schema.linterhub.com/manager.json"
                 },
                 "package": {
                     "type": "string",

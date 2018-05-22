@@ -2,6 +2,11 @@
     "$schema": "https://schema.linterhub.com/deps.json",
     "id": "test://test",
     "dependencies": [
-        []
+        [{
+            "manager": "os",
+            "package": "url://url",
+            "version": ".",
+            "target": true
+        }]
     ]
 }

@@ -1,7 +1,8 @@
 var path = require('path'),
+    fs = require("fs"),
     gulp = require('gulp'),
     jsonFormat = require('gulp-json-format'),
-    jsonSchema = require("gulp-json-schema");;
+    jsonSchema = require("gulp-json-schema");
 
 gulp.task('format', function() {
     var stream = gulp
@@ -23,13 +24,17 @@ gulp.task('validate', function() {
 });
 
 gulp.task('test-deps', function() {
-    return;
+    return true;
     var stream = gulp
         .src('test/*.deps.json')
         .pipe(jsonSchema({
             schema: 'src/deps.json',
+            schemas: [
+                fs.readdirSync('src/').map(name => JSON.parse(fs.readFileSync('src/' + name)))
+            ],
             loadMissingSchemas: true,
-            checkRecursive: true
+            checkRecursive: true,
+            verbose: true
         }));
     return stream;
 });
