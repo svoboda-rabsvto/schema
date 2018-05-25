@@ -13,7 +13,7 @@ gulp.task('format', function() {
     return stream;
 });
 
-gulp.task('validate', function() {
+gulp.task('validate', [ 'format' ], function() {
     var stream = gulp
         .src('src/schema/*.json')
         .pipe(jsonSchema({
@@ -24,7 +24,7 @@ gulp.task('validate', function() {
     return stream;
 });
 
-gulp.task('bundle', function() {
+gulp.task('bundle', [ 'validate' ], function() {
     var stream = gulp.src('src/schema/collection.json')
         .pipe(jsonSchemaBundle())
         .pipe(jsonFormat(4))
@@ -32,7 +32,7 @@ gulp.task('bundle', function() {
     return stream;
 });
 
-gulp.task('build', [ 'format', 'validate', 'bundle' ], function() {
+gulp.task('build', [ 'bundle' ], function() {
     var stream = gulp
         .src([
             'src/schema/*.json',
