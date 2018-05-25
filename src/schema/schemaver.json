@@ -4,6 +4,7 @@
     "id": "https://schema.linterhub.com/schemaver.json",
     "title": "Versioned Schema",
     "description": "The meta-schema of versioned JSON schema",
+    "type": "object",
     "allOf": [
         {
             "$ref": "http://json-schema.org/draft-04/schema"
@@ -12,7 +13,7 @@
             "properties": {
                 "$version": {
                     "title": "Version",
-                    "description": "The version of the schema",
+                    "description": "The version of the object",
                     "type": "string",
                     "pattern": "^[0-9]+.[0-9]+.[0-9]+$"
                 }

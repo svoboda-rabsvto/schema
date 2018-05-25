@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "JSON schemas for linterhub",
   "scripts": {
-    "build": "gulp",
+    "build": "gulp build",
+    "test": "gulp test",
     "release": "gulp release"
   },
   "repository": {

@@ -3,7 +3,7 @@
     "$version": "1.0.0",
     "id": "https://schema.linterhub.com/deps.json",
     "title": "Package dependencies",
-    "description": "The schema of package dependencies",
+    "description": "The schema of dependencies that extends package",
     "type": "object",
     "properties": {
         "package-id": {
@@ -41,7 +41,7 @@
         },
         "package": {
             "title": "Package",
-            "description": "The definition of required package",
+            "description": "The definition of required package, later it should be converted to package-id reference",
             "type": "object",
             "properties": {
                 "manager": {
@@ -63,7 +63,7 @@
                 "target": {
                     "type": "boolean",
                     "title": "Target",
-                    "description": "The flag indicating whether the package is the linter itself",
+                    "description": "The flag indicating whether the package is the target itself",
                     "default": false
                 }
             },

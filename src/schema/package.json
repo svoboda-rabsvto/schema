@@ -8,18 +8,18 @@
     "properties": {
         "id": {
             "title": "Id",
-            "description": "The package unique identifier in URI form, which points to current version of that definition",
+            "description": "The package unique identifier in URI form which points to current version of package file",
             "type": "string",
             "format": "uri"
-        },
-        "version": {
-            "title": "Version",
-            "description": "The package version in a format it was originally specified",
-            "type": "string"
         },
         "name": {
             "title": "Name",
             "description": "The original name of the package",
+            "type": "string"
+        },
+        "version": {
+            "title": "Version",
+            "description": "The package version in a format it was originally specified",
             "type": "string"
         },
         "description": {

@@ -3,7 +3,7 @@
     "$version": "1.0.0",
     "id": "https://schema.linterhub.com/collection.json",
     "title": "Collections",
-    "description": "The schema with references to collections used only for developement",
+    "description": "The schema with references to collections used mostly for developement",
     "type": "object",
     "definitions": {
         "language": {
