@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.linterhub.com/schemaver.json",
+    "$version": "1.0.0",
+    "id": "https://schema.linterhub.com/manager.json",
+    "title": "Collection: Package Manager",
+    "description": "The set of names of package managers",
+    "type": "string",
+    "oneOf": [
+        {
+            "$ref": "./manager.language.json"
+        },
+        {
+            "$ref": "./manager.system.json"
+        }
+    ],
+    "additionalItems": false
+}

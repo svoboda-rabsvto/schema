@@ -1,20 +1,14 @@
 {
     "$schema": "https://schema.linterhub.com/schemaver.json",
     "$version": "1.0.0",
-    "id": "https://schema.linterhub.com/manager.json",
-    "type": "string",
     "title": "Collection: Package Manager",
-    "description": "The set of names of package managers",
+    "description": "The set of system package managers",
+    "id": "https://schema.linterhub.com/manager.system.json",
+    "type": "string",
     "enum": [
         "os",
         "url",
         "platform",
-        "bower",
-        "composer",
-        "npm",
-        "pip",
-        "yarn",
-        "gem",
         "pacman",
         "chocolatey"
     ],

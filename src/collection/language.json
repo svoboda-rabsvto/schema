@@ -4,12 +4,13 @@
     "id": "https://schema.linterhub.com/language.json",
     "title": "Collection: programming language and extension",
     "description": "The set of programming languages and associated file extensions",
+    "type": "string",
     "oneOf": [
         {
-            "$ref": "https://schema.linterhub.com/language.linter.json"
+            "$ref": "./language.linter.json"
         },
         {
-            "$ref": "https://schema.linterhub.com/language.linguist.json"
+            "$ref": "./language.linguist.json"
         }
     ]
 }

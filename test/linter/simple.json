@@ -1,0 +1,13 @@
+{
+    "$schema": "../../src/schema/linter.json",
+    "package-id": "url://url",
+    "extensions": [
+        ".ext"
+    ],
+    "configs": [
+        "file"
+    ],
+    "languages": [
+        "Text"
+    ]
+}

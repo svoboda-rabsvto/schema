@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.linterhub.com/schemaver.json",
+    "$version": "1.0.0",
+    "title": "Collection: Package Manager",
+    "description": "The set of language package managers",
+    "id": "https://schema.linterhub.com/manager.language.json",
+    "type": "string",
+    "enum": [
+        "bower",
+        "composer",
+        "npm",
+        "pip",
+        "yarn",
+        "gem"
+    ],
+    "additionalItems": false
+}

@@ -1,7 +1,0 @@
-{
-    "$schema": "https://schema.linterhub.com/meta.json",
-    "id": "test://test",
-    "description": "test",
-    "url": "url://url",
-    "license": "MIT"
-}

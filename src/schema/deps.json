@@ -2,20 +2,20 @@
     "$schema": "https://schema.linterhub.com/schemaver.json",
     "$version": "1.0.0",
     "id": "https://schema.linterhub.com/deps.json",
-    "title": "Linter Dependencies",
-    "description": "The schema of linter dependencies",
+    "title": "Package dependencies",
+    "description": "The schema of package dependencies",
     "type": "object",
     "properties": {
-        "id": {
-            "type": "string",
+        "package-id": {
             "title": "Id",
-            "description": "The URI to the latest version of this file",
+            "description": "The package unique identifier in URI form which points to current version of package file",
+            "type": "string",
             "format": "uri"
         },
         "dependencies": {
-            "type": "array",
             "title": "Dependencies",
             "description": "The array of linter dependencies, where each dependency is an array of required packages",
+            "type": "array",
             "items": {
                 "$ref": "#/definitions/dependency"
             },
@@ -24,15 +24,15 @@
         }
     },
     "required": [
-        "id",
+        "package-id",
         "dependencies"
     ],
     "additionalItems": false,
     "definitions": {
         "dependency": {
-            "type": "array",
             "title": "Dependency",
             "description": "The array of required packages",
+            "type": "array",
             "items": {
                 "$ref": "#/definitions/package"
             },
@@ -40,25 +40,25 @@
             "uniqueItems": true
         },
         "package": {
-            "type": "object",
             "title": "Package",
-            "description": "The definition of package",
+            "description": "The definition of required package",
+            "type": "object",
             "properties": {
                 "manager": {
-                    "type": "string",
                     "title": "Package manager",
                     "description": "The package manager name",
-                    "$ref": "https://schema.linterhub.com/manager.json"
+                    "type": "string",
+                    "$ref": "./collection.json#/definitions/manager"
                 },
                 "package": {
-                    "type": "string",
                     "title": "Package",
-                    "description": "The package name in a format specified by manager"
+                    "description": "The package name in a format specified by manager",
+                    "type": "string"
                 },
                 "version": {
-                    "type": "string",
                     "title": "Version",
-                    "description": "The package version in a format specified by manager"
+                    "description": "The package version in a format accepted by package manager, if not specifdied the latest version is assumed",
+                    "type": "string"
                 },
                 "target": {
                     "type": "boolean",
@@ -71,7 +71,7 @@
                 "manager",
                 "package"
             ],
-            "additionalProperties": false
+            "additionalProperties": true
         }
     }
 }

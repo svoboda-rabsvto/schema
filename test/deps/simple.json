@@ -1,6 +1,6 @@
 {
-    "$schema": "https://schema.linterhub.com/deps.json",
-    "id": "test://test",
+    "$schema": "../../src/schema/deps.json",
+    "package-id": "test://test",
     "dependencies": [
         [{
             "manager": "os",

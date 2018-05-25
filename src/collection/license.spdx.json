@@ -3,7 +3,7 @@
     "$version": "1.0.0",
     "id": "https://schema.linterhub.com/license.spdx.json",
     "title": "Collection: software license",
-    "description": "The set of acronyms of software licenses imported from SPDX",
+    "description": "The set of identifiers of software licenses imported from SPDX catalog",
     "type": "string",
     "enum": [
         "0BSD",

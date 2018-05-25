@@ -1,0 +1,9 @@
+{
+    "$schema": "../../src/schema/package.json",
+    "id": "uri://uri",
+    "name": "name",
+    "description": "description",
+    "url": "url://url",
+    "license": "MIT",
+    "copying": "copying"
+}

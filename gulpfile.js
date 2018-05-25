@@ -24,7 +24,6 @@ gulp.task('validate', function() {
 });
 
 gulp.task('test-deps', function() {
-    return true;
     var stream = gulp
         .src('test/*.deps.json')
         .pipe(jsonSchema({
@@ -40,7 +39,6 @@ gulp.task('test-deps', function() {
 });
 
 gulp.task('test-meta', function() {
-    return;
     var stream = gulp
         .src('test/*.meta.json')
         .pipe(jsonSchema({

@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schema.linterhub.com/schemaver.json",
+    "$version": "1.0.0",
+    "id": "https://schema.linterhub.com/license.json",
+    "title": "Licensed object",
+    "description": "The definition of the object that includes license information",
+    "type": "string",
+    "oneOf": [
+        {
+            "$ref": "./license.linter.json"
+        },
+        {
+            "$ref": "./license.spdx.json"
+        }
+    ]
+}

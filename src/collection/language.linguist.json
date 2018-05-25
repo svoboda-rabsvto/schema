@@ -13,7 +13,7 @@
         "language": {
             "type": "string",
             "description": "The programming language name",
-            "": [
+            "oneOf": [
                 {
                     "enum": [
                         "1C Enterprise"
