@@ -2,11 +2,12 @@ var path = require('path'),
     fs = require("fs"),
     gulp = require('gulp'),
     jsonFormat = require('gulp-json-format'),
-    jsonSchema = require("gulp-json-schema");
+    jsonSchema = require("gulp-json-schema"),
+    jsonSchemaBundle = require('gulp-jsonschema-bundle');
 
 gulp.task('format', function() {
     var stream = gulp
-        .src('src/*.json')
+        .src('src/**/*.json')
         .pipe(jsonFormat(4))
         .pipe(gulp.dest('src'));
     return stream;
@@ -14,18 +15,18 @@ gulp.task('format', function() {
 
 gulp.task('validate', function() {
     var stream = gulp
-        .src('src/*.json')
+        .src('src/schema/*.json')
         .pipe(jsonSchema({
-            schema: 'src/schemaver.json',
+            schema: 'src/schema/schemaver.json',
             loadMissingSchemas: true,
             checkRecursive: true
         }));
     return stream;
 });
 
-gulp.task('test-deps', function() {
+gulp.task('test', function() {
     var stream = gulp
-        .src('test/*.deps.json')
+        .src('test/**/*.json')
         .pipe(jsonSchema({
             schema: 'src/deps.json',
             schemas: [
@@ -50,10 +51,20 @@ gulp.task('test-meta', function() {
     return stream;
 });
 
-gulp.task('build', [ 'format', 'validate', 'test-meta', 'test-deps' ], function() {
-    var stream = gulp
-        .src('src/*.json')
+gulp.task('bundle', function() {
+    var stream = gulp.src('src/schema/collection.json')
+        .pipe(jsonSchemaBundle())
         .pipe(jsonFormat(4))
+        .pipe(gulp.dest('build'));
+    return stream;
+});
+
+gulp.task('build', [ 'format', 'validate', 'bundle' ], function() {
+    var stream = gulp
+        .src([
+            'src/schema/*.json',
+            '!src/schema/collection.json'
+        ])
         .pipe(gulp.dest('build'));
     return stream;
 });

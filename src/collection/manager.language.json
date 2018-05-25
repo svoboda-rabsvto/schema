@@ -1,9 +1,7 @@
 {
-    "$schema": "https://schema.linterhub.com/schemaver.json",
-    "$version": "1.0.0",
+    "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: Package Manager",
     "description": "The set of language package managers",
-    "id": "https://schema.linterhub.com/manager.language.json",
     "type": "string",
     "enum": [
         "bower",

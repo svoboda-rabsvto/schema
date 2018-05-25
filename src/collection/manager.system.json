@@ -1,9 +1,7 @@
 {
-    "$schema": "https://schema.linterhub.com/schemaver.json",
-    "$version": "1.0.0",
+    "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: Package Manager",
     "description": "The set of system package managers",
-    "id": "https://schema.linterhub.com/manager.system.json",
     "type": "string",
     "enum": [
         "os",

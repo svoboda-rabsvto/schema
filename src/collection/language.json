@@ -1,7 +1,5 @@
 {
-    "$schema": "https://schema.linterhub.com/schemaver.json",
-    "$version": "1.0.0",
-    "id": "https://schema.linterhub.com/language.json",
+    "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: programming language and extension",
     "description": "The set of programming languages and associated file extensions",
     "type": "string",
