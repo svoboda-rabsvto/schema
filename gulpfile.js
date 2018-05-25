@@ -24,33 +24,6 @@ gulp.task('validate', function() {
     return stream;
 });
 
-gulp.task('test', function() {
-    var stream = gulp
-        .src('test/**/*.json')
-        .pipe(jsonSchema({
-            schema: 'src/deps.json',
-            schemas: [
-                fs.readdirSync('src/').map(name => JSON.parse(fs.readFileSync('src/' + name)))
-            ],
-            loadMissingSchemas: true,
-            checkRecursive: true,
-            verbose: true
-        }));
-    return stream;
-});
-
-gulp.task('test-meta', function() {
-    var stream = gulp
-        .src('test/*.meta.json')
-        .pipe(jsonSchema({
-            schema: 'src/meta.json',
-            loadMissingSchemas: true,
-            checkRecursive: true,
-            verbose: true
-        }));
-    return stream;
-});
-
 gulp.task('bundle', function() {
     var stream = gulp.src('src/schema/collection.json')
         .pipe(jsonSchemaBundle())
