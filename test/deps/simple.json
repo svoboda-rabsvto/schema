@@ -1,6 +1,6 @@
 {
     "$schema": "../../src/schema/deps.json",
-    "package-id": "test://test",
+    "package-id": "url://url",
     "dependencies": [
         [{
             "manager": "os",
