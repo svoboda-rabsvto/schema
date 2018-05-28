@@ -4,10 +4,15 @@ This folder contains core JSON Schemas:
 
 | Name                            | Description                                          |
 |---------------------------------|------------------------------------------------------|
-| [`schemaver`](semver.json)      | The core schema that implements versioning mechanism |
 | [`package`](package.json)       | Meta-information of software package                 |
 | [`deps`](deps.json)             | Extension: definition of package dependencies        |
 | [`linter`](linter.json)         | Extension: linter package                            |
-| [`collection`](collection.json) | Includes references to common data sets              |
 
-Schema's structure is described in [docs](../../docs/).
+and several internal JSON Schemas:
+
+| Name                            | Description                                          |
+|---------------------------------|------------------------------------------------------|
+| [`schemaver`](semver.json)      | The core schema that implements versioning mechanism |
+| [`collection`](collection.json) | References to schemas with common data sets          |
+
+Each schema is described in [docs](../../docs/).

@@ -39,7 +39,7 @@ gulp.task('format', function() {
 });
 
 // Validate all core schemas according to schemaver
-gulp.task('validate', [ 'format' ], function() {
+gulp.task('validate', function() {
     var stream = gulp
         .src(config.schema.mask)
         .pipe(jsonSchema({

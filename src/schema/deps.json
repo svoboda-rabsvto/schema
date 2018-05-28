@@ -52,7 +52,7 @@
                 },
                 "package": {
                     "title": "Package",
-                    "description": "The package name in a format specified by manager",
+                    "description": "The package name in a format accepted by package manager",
                     "type": "string"
                 },
                 "version": {
