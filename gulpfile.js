@@ -30,71 +30,64 @@ var config = {
 };
 
 // Reformat and save all source schemas
-gulp.task('format', function() {
-    var stream = gulp
-        .src(config.src.mask)
-        .pipe(jsonFormat(4))
-        .pipe(gulp.dest(config.src.dir));
-    return stream;
-});
+const format = () => gulp
+    .src(config.src.mask)
+    .pipe(jsonFormat(4))
+    .pipe(gulp.dest(config.src.dir));
 
 // Validate all core schemas according to schemaver
-gulp.task('validate', function() {
-    var stream = gulp
-        .src(config.schema.mask)
-        .pipe(jsonSchema({
-            schema: config.schema.ver,
-            loadMissingSchemas: true,
-            checkRecursive: true
-        }));
-    return stream;
-});
+const validate = () => gulp
+    .src(config.schema.mask)
+    .pipe(jsonSchema({
+        schema: config.schema.ver,
+        loadMissingSchemas: true,
+        checkRecursive: true,
+        verbose: true,
+    }));
 
 // Resolve all $ref in collections and create a bundle
-gulp.task('bundle', [ 'validate' ], function() {
-    var stream = gulp.src(config.schema.collection)
-        .pipe(jsonSchemaBundle())
-        .pipe(jsonFormat(4))
-        .pipe(gulp.dest(config.build.dir));
-    return stream;
-});
+const bundle = () => gulp
+    .src(config.schema.collection)
+    .pipe(jsonSchemaBundle())
+    .pipe(jsonFormat(4))
+    .pipe(gulp.dest(config.build.dir))
 
 // Build all schema sources
-gulp.task('build', [ 'bundle' ], function() {
-    var stream = gulp
-        .src([
-            config.schema.mask,
-            '!' + config.schema.collection
-        ])
-        .pipe(gulp.dest(config.build.dir));
-    return stream;
-});
+const build = () => gulp
+    .src([
+        config.schema.mask,
+        '!' + config.schema.collection
+    ])
+    .pipe(gulp.dest(config.build.dir));
 
 // Copy all static assets to release
-gulp.task('static', function() {
-    var stream = gulp
-        .src(config.assets.cname)
-        .pipe(gulp.dest(config.dist.dir));
-    return stream;
-});
+const static = () => gulp
+    .src(config.assets.cname)
+    .pipe(gulp.dest(config.dist.dir));
 
 // Run tests over files in test folder
-gulp.task('test', function() {
+const test = () => {
     // TODO: Implement (probably separate tasks for src, dist & build)
-});
+    return;
+};
 
 // Build and release (copy to dist) current version
-gulp.task('release', [ 'static', 'build', 'test' ], function() {
-    var stream = gulp
-        .src(config.build.mask)
-        .pipe(gulp.dest(config.dist.dir))
-        .pipe(gulp.dest(function(file) {
-            var content = JSON.parse(file.contents.toString());
-            var version = content.$version;
-            return path.join(config.dist.dir, version);
-        }));
+const release = () => gulp
+    .src(config.build.mask)
+    .pipe(gulp.dest(config.dist.dir))
+    .pipe(gulp.dest(file => {
+        var content = JSON.parse(file.contents.toString());
+        var version = content.$version;
+        return path.join(config.dist.dir, version);
+    }));
 
-    return stream;
-});
+// Tasks
+gulp.task('format', format);
+gulp.task('validate', validate);
+gulp.task('bundle', gulp.series('validate', bundle));
+gulp.task('build', gulp.series('bundle', build));
+gulp.task('static', static);
+gulp.task('test', test);
+gulp.task('release', gulp.series('static', 'build', /*'test',*/ release));
 
-gulp.task('default', [ 'build' ]);
+gulp.task('default', gulp.series('build'));
