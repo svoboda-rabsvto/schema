@@ -6,7 +6,7 @@
     "gulp": "./node_modules/gulp/bin/gulp.js",
     "build": "gulp build",
     "test": "gulp test",
-    "licensee": "./node_modules/licensee/licensee --errors-only",
+    "licensee": "./node_modules/licensee/licensee --errors-only || true",
     "release": "gulp release"
   },
   "repository": {
