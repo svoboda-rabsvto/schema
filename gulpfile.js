@@ -6,10 +6,11 @@ var path = require('path'),
     gulp = require('gulp'),
     jsonFormat = require('gulp-json-format'),
     jsonSchema = require("gulp-json-schema"),
-    jsonData = require('gulp-data');
-    jsonSchemaBundle = require('gulp-jsonschema-bundle');
-    yaml = require('js-yaml');
-
+    jsonData = require('gulp-data'),
+    jsonSchemaBundle = require('gulp-jsonschema-bundle'),
+    yaml = require('js-yaml'),
+    validator = require('json-schema-remote'),
+    finder = require('fs-finder');
 
 // Path and mask config
 var config = {
@@ -40,6 +41,10 @@ var config = {
     build: {
         dir: 'build',
         mask: 'build/*.json'
+    },
+    test: {
+        dir: 'test',
+        mask: 'test/**/test.json'
     },
     ext: {
         linguist: 'ext/github/linguist/lib/linguist/languages.yml',
@@ -90,10 +95,36 @@ const static = () => gulp
     .pipe(gulp.dest(config.dist.dir));
 
 // Run tests over files in test folder
-const test = (done) => {
-    // TODO: Implement (probably separate tasks for src, dist & build)
-    done();
-};
+const test = () => gulp 
+    .src(config.test.mask) 
+    .pipe(jsonData(file => {
+        const parseSchema= (path) => JSON.parse(fs.readFileSync(path));
+        const schema = parseSchema(file.path);
+        schema.tests.map(test => {
+            const data = parseSchema(test.data.$ref);
+            validator.validate(data, schema.$schema.$ref)
+                .then(() => {
+                    if(test.valid){
+                        console.log(`OK: ${test.data.$ref}`)
+                    }else{
+                        console.log(`ERROR: ${test.data.$ref}`)
+                        console.log(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
+                        process.exitCode = 1
+                    }
+                })
+                .catch((error) => {
+                    if(!test.valid) {
+                        console.log(`OK: ${test.data.$ref}`)
+                    }else {
+                        console.log(`ERROR: ${test.data.$ref}`)
+                        console.log(`MESSAGE: ${error.errors[0].message}`);
+                        console.log(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
+                        process.exitCode = 1
+                    }
+                });
+        });
+        
+    }))
 
 // Build and release (copy to dist) current version
 const release = () => gulp
@@ -110,7 +141,7 @@ const importLanguages = () => gulp
     .src(config.template.linguist)
     .pipe(jsonData((file) => {
         const list = yaml.safeLoad(fs.readFileSync(config.ext.linguist));
-        const template = JSON.parse(fs.readFileSync(file.path));
+        const template = readSchema(file.path);
 
         template.definitions.language.oneOf = Object.keys(list).map(name =>
         {
@@ -124,25 +155,25 @@ const importLanguages = () => gulp
             return language;
         });
 
-        const formatted = JSON.stringify(template, null, 4);
-        file.contents = Buffer.from(formatted, 'utf8');
+        file.contents = Buffer.from(JSON.stringify(template), 'utf8');
         return file;
     }))
+    .pipe(jsonFormat(4))
     .pipe(gulp.dest(config.collection.dir));
 
 // Import licenses of spdx to file 
 const importLicenses = () => gulp
     .src(config.template.spdx)
     .pipe(jsonData((file) => {
-        const list = JSON.parse(fs.readFileSync(config.ext.spdx));
-        const template = JSON.parse(fs.readFileSync(file.path));        
+        const list = readSchema(config.ext.spdx);
+        const template = readSchema(file.path);        
         template.enum = list.licenses.map(l => l.licenseId);
         
-        const formatted = JSON.stringify(template, null, 4);
-        file.contents = Buffer.from(formatted, 'utf8');
+        file.contents = Buffer.from(JSON.stringify(template), 'utf8');
         return file;
     }))
-    .pipe(gulp.dest( config.collection.dir));   
+    .pipe(jsonFormat(4))
+    .pipe(gulp.dest( config.collection.dir));    
 
 // Tasks
 gulp.task('format', format);
@@ -151,7 +182,12 @@ gulp.task('bundle', gulp.series('validate', bundle));
 gulp.task('build', gulp.series('bundle', build));
 gulp.task('static', static);
 gulp.task('test', test);
-gulp.task('release', gulp.series('static', 'build', /*'test',*/ release));
+gulp.task('release', gulp.series('static', 'build', 'test', release));
 gulp.task('default', gulp.series('build'));
 gulp.task('import-licenses', importLicenses);
 gulp.task('import-languages', importLanguages);
+gulp.task('import', gulp.parallel('import-languages', 'import-licenses'))
+
+// Functions
+const readSchema = (path) => JSON.parse(fs.readFileSync(path));
+validator.setLoggingFunction(()=>{});
