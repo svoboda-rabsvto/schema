@@ -1,0 +1,29 @@
+{
+    "description": "test of packages managers",
+    "$schema": { 
+        "$ref": "https://schema.linterhub.com/package.json"
+    },
+    "tests": [
+        {
+            "description": "Custom license to test",
+            "data": { 
+                "$ref" : "test/package/files/package-custom-license.json" 
+            },
+            "valid": true
+        },
+        {
+            "description": "SPDX license to test",
+            "data": { 
+                "$ref" : "test/package/files/package-spdx-license.json"
+            },
+            "valid": true
+        },
+        {
+            "description": "Test with errors, invalid",
+            "data": { 
+                "$ref" : "test/package/files/package-incorect.json"
+            },
+            "valid": false
+        }
+    ]
+}

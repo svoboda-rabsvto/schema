@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Collection: programming language and extension",
+    "description": "The set of programming languages and associated file extensions imported from linguist project",
+    "oneOf": [
+        {
+            "$ref": "#/definitions/language"
+        }
+    ],
+    "definitions": {
+        "language": {
+            "type": "string",
+            "description": "The programming language name",
+            "oneOf": []
+        }
+    }
+}

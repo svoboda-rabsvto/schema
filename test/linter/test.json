@@ -1,0 +1,29 @@
+{
+    "description": "Test's of linter meta information.",
+    "$schema": { 
+        "$ref": "https://schema.linterhub.com/linter.json"
+    },
+    "tests": [
+        {
+            "description": "Test of linguist language of linter",
+            "data": { 
+                "$ref" : "test/linter/files/linter-linguist-language.json" 
+            },
+            "valid": true
+        },
+        {
+            "description": "Test of custom language of linter",
+            "data": { 
+                "$ref" : "test/linter/files/linter-custom-language.json"
+            },
+            "valid": true
+        },
+        {
+            "description": "Test with error, invalid",
+            "data": { 
+                "$ref" : "test/linter/files/linter-incorect.json"
+            },
+            "valid": false
+        }
+    ]
+}

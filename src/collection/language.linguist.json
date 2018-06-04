@@ -188,6 +188,11 @@
                     "extensions": [
                         ".apacheconf",
                         ".vhost"
+                    ],
+                    "filenames": [
+                        ".htaccess",
+                        "apache2.conf",
+                        "httpd.conf"
                     ]
                 },
                 {
@@ -637,6 +642,14 @@
                     ],
                     "extensions": [
                         ".soy"
+                    ]
+                },
+                {
+                    "enum": [
+                        "Cloud Firestore Security Rules"
+                    ],
+                    "filenames": [
+                        "firestore.rules"
                     ]
                 },
                 {
@@ -1293,6 +1306,9 @@
                     "extensions": [
                         ".gn",
                         ".gni"
+                    ],
+                    "filenames": [
+                        ".gn"
                     ]
                 },
                 {
@@ -1580,6 +1596,14 @@
                 },
                 {
                     "enum": [
+                        "HXML"
+                    ],
+                    "extensions": [
+                        ".hxml"
+                    ]
+                },
+                {
+                    "enum": [
                         "Hack"
                     ],
                     "extensions": [
@@ -1633,6 +1657,14 @@
                 },
                 {
                     "enum": [
+                        "HiveQL"
+                    ],
+                    "extensions": [
+                        ".q"
+                    ]
+                },
+                {
+                    "enum": [
                         "Hy"
                     ],
                     "extensions": [
@@ -1676,6 +1708,8 @@
                         ".properties"
                     ],
                     "filenames": [
+                        ".editorconfig",
+                        ".gitconfig",
                         "buildozer.spec"
                     ]
                 },
@@ -2195,6 +2229,7 @@
                         ".lua",
                         ".fcgi",
                         ".nse",
+                        ".p8",
                         ".pd_lua",
                         ".rbxs",
                         ".wlua"
@@ -2320,7 +2355,7 @@
                         ".mkd",
                         ".mkdn",
                         ".mkdown",
-                        ".ron",
+                        ".ronn",
                         ".workbook"
                     ]
                 },
@@ -2435,7 +2470,6 @@
                     "extensions": [
                         ".druby",
                         ".duby",
-                        ".mir",
                         ".mirah"
                     ]
                 },
@@ -2836,6 +2870,7 @@
                         ".phpt"
                     ],
                     "filenames": [
+                        ".php",
                         ".php_cs",
                         ".php_cs.dist",
                         "Phakefile"
@@ -2960,6 +2995,9 @@
                         ".t"
                     ],
                     "filenames": [
+                        "Makefile.PL",
+                        "Rexfile",
+                        "ack",
                         "cpanfile"
                     ]
                 },
@@ -2979,9 +3017,6 @@
                         ".pm",
                         ".pm6",
                         ".t"
-                    ],
-                    "filenames": [
-                        "Rexfile"
                     ]
                 },
                 {
@@ -3029,6 +3064,14 @@
                 {
                     "enum": [
                         "Pod"
+                    ],
+                    "extensions": [
+                        ".pod"
+                    ]
+                },
+                {
+                    "enum": [
+                        "Pod 6"
                     ],
                     "extensions": [
                         ".pod"
@@ -3255,7 +3298,8 @@
                         ".rsx"
                     ],
                     "filenames": [
-                        ".Rprofile"
+                        ".Rprofile",
+                        "expr-dist"
                     ]
                 },
                 {
@@ -3530,6 +3574,7 @@
                         "Berksfile",
                         "Brewfile",
                         "Buildfile",
+                        "Capfile",
                         "Dangerfile",
                         "Deliverfile",
                         "Fastfile",
@@ -3753,8 +3798,29 @@
                         ".bash_logout",
                         ".bash_profile",
                         ".bashrc",
+                        ".cshrc",
+                        ".login",
+                        ".profile",
+                        ".zlogin",
+                        ".zlogout",
+                        ".zprofile",
+                        ".zshenv",
+                        ".zshrc",
+                        "9fs",
                         "PKGBUILD",
-                        "gradlew"
+                        "bash_logout",
+                        "bash_profile",
+                        "bashrc",
+                        "cshrc",
+                        "gradlew",
+                        "login",
+                        "man",
+                        "profile",
+                        "zlogin",
+                        "zlogout",
+                        "zprofile",
+                        "zshenv",
+                        "zshrc"
                     ]
                 },
                 {
@@ -3974,6 +4040,10 @@
                     ],
                     "extensions": [
                         ".toml"
+                    ],
+                    "filenames": [
+                        "Cargo.lock",
+                        "Gopkg.lock"
                     ]
                 },
                 {
@@ -3992,6 +4062,10 @@
                         ".tcl",
                         ".adp",
                         ".tm"
+                    ],
+                    "filenames": [
+                        "owh",
+                        "starfield"
                     ]
                 },
                 {
@@ -4054,6 +4128,7 @@
                     ],
                     "filenames": [
                         "COPYING",
+                        "COPYING.regex",
                         "COPYRIGHT.regex",
                         "FONTLOG",
                         "INSTALL",
@@ -4068,6 +4143,7 @@
                         "delete.me",
                         "keep.me",
                         "read.me",
+                        "readme.1st",
                         "test.me"
                     ]
                 },
@@ -4233,6 +4309,7 @@
                         ".vim"
                     ],
                     "filenames": [
+                        ".gvimrc",
                         ".nvimrc",
                         ".vimrc",
                         "_vimrc",
@@ -4319,6 +4396,23 @@
                     ],
                     "extensions": [
                         ".toc"
+                    ]
+                },
+                {
+                    "enum": [
+                        "X BitMap"
+                    ],
+                    "extensions": [
+                        ".xbm"
+                    ]
+                },
+                {
+                    "enum": [
+                        "X PixMap"
+                    ],
+                    "extensions": [
+                        ".xpm",
+                        ".pm"
                     ]
                 },
                 {
@@ -4455,6 +4549,7 @@
                     ],
                     "filenames": [
                         ".classpath",
+                        ".cproject",
                         ".project",
                         "App.config",
                         "NuGet.config",
@@ -4463,15 +4558,6 @@
                         "Web.Release.config",
                         "Web.config",
                         "packages.config"
-                    ]
-                },
-                {
-                    "enum": [
-                        "XPM"
-                    ],
-                    "extensions": [
-                        ".xpm",
-                        ".pm"
                     ]
                 },
                 {
@@ -4548,6 +4634,7 @@
                     ],
                     "extensions": [
                         ".yml",
+                        ".mir",
                         ".reek",
                         ".rviz",
                         ".sublime-syntax",
@@ -4558,7 +4645,9 @@
                     ],
                     "filenames": [
                         ".clang-format",
-                        ".clang-tidy"
+                        ".clang-tidy",
+                        ".gemrc",
+                        "glide.lock"
                     ]
                 },
                 {
@@ -4666,6 +4755,14 @@
                 },
                 {
                     "enum": [
+                        "q"
+                    ],
+                    "extensions": [
+                        ".q"
+                    ]
+                },
+                {
+                    "enum": [
                         "reStructuredText"
                     ],
                     "extensions": [
@@ -4673,6 +4770,14 @@
                         ".rest",
                         ".rest.txt",
                         ".rst.txt"
+                    ]
+                },
+                {
+                    "enum": [
+                        "sed"
+                    ],
+                    "extensions": [
+                        ".sed"
                     ]
                 },
                 {
