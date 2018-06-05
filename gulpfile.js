@@ -11,6 +11,7 @@ var path = require('path'),
     yaml = require('js-yaml'),
     validator = require('json-schema-remote'),
     finder = require('fs-finder')
+    log = require('fancy-log')
     readSchema = (path) => JSON.parse(fs.readFileSync(path));
 
 // Initialization
@@ -109,20 +110,20 @@ const test = () => gulp
             validator.validate(data, schema.$schema.$ref)
                 .then(() => {
                     if (test.valid) {
-                        console.log(`OK: ${test.data.$ref}`);
+                        log(`OK: ${test.data.$ref}`);
                     } else {
-                        console.log(`ERROR: ${test.data.$ref}`);
-                        console.log(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
+                        log(`ERROR: ${test.data.$ref}`);
+                        log(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
                         process.exitCode = 1;
                     }
                 })
                 .catch((error) => {
                     if (!test.valid) {
-                        console.log(`OK: ${test.data.$ref}`);
+                        log(`OK: ${test.data.$ref}`);
                     } else {
-                        console.log(`ERROR: ${test.data.$ref}`);
-                        console.log(`MESSAGE: ${error.errors[0].message}`);
-                        console.log(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
+                        log(`ERROR: ${test.data.$ref}`);
+                        log(`MESSAGE: ${error.errors[0].message}`);
+                        log(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
                         process.exitCode = 1;
                     }
                 });
