@@ -10,7 +10,11 @@ var path = require('path'),
     jsonSchemaBundle = require('gulp-jsonschema-bundle'),
     yaml = require('js-yaml'),
     validator = require('json-schema-remote'),
-    finder = require('fs-finder');
+    finder = require('fs-finder')
+    readSchema = (path) => JSON.parse(fs.readFileSync(path));
+
+// Initialization
+validator.setLoggingFunction(() => { });
 
 // Path and mask config
 var config = {
@@ -95,27 +99,27 @@ const static = () => gulp
     .pipe(gulp.dest(config.dist.dir));
 
 // Run tests over files in test folder
-const test = () => gulp 
-    .src(config.test.mask) 
+const test = () => gulp
+    .src(config.test.mask)
     .pipe(jsonData(file => {
-        const parseSchema= (path) => JSON.parse(fs.readFileSync(path));
+        const parseSchema = (path) => JSON.parse(fs.readFileSync(path));
         const schema = parseSchema(file.path);
         schema.tests.map(test => {
             const data = parseSchema(test.data.$ref);
             validator.validate(data, schema.$schema.$ref)
                 .then(() => {
-                    if(test.valid){
+                    if (test.valid) {
                         console.log(`OK: ${test.data.$ref}`);
-                    }else{
+                    } else {
                         console.log(`ERROR: ${test.data.$ref}`);
                         console.log(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
                         process.exitCode = 1;
                     }
                 })
                 .catch((error) => {
-                    if(!test.valid) {
+                    if (!test.valid) {
                         console.log(`OK: ${test.data.$ref}`);
-                    }else {
+                    } else {
                         console.log(`ERROR: ${test.data.$ref}`);
                         console.log(`MESSAGE: ${error.errors[0].message}`);
                         console.log(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
@@ -136,19 +140,18 @@ const release = () => gulp
     }));
 
 // Import languages of linguist to file 
-const importLanguages = () => gulp 
+const importLanguages = () => gulp
     .src(config.template.linguist)
     .pipe(jsonData((file) => {
         const list = yaml.safeLoad(fs.readFileSync(config.ext.linguist));
         const template = readSchema(file.path);
 
-        template.definitions.language.oneOf = Object.keys(list).map(name =>
-        {
+        template.definitions.language.oneOf = Object.keys(list).map(name => {
             let item = list[name];
             let language =
-            {
-                "enum": [name]
-            };
+                {
+                    "enum": [name]
+                };
             if (item.extensions && item.extensions.length) language.extensions = item.extensions;
             if (item.filenames && item.filenames.length) language.filenames = item.filenames;
             return language;
@@ -165,14 +168,14 @@ const importLicenses = () => gulp
     .src(config.template.spdx)
     .pipe(jsonData((file) => {
         const list = readSchema(config.ext.spdx);
-        const template = readSchema(file.path);        
+        const template = readSchema(file.path);
         template.enum = list.licenses.map(l => l.licenseId);
-        
+
         file.contents = Buffer.from(JSON.stringify(template), 'utf8');
         return file;
     }))
     .pipe(jsonFormat(4))
-    .pipe(gulp.dest( config.collection.dir));    
+    .pipe(gulp.dest(config.collection.dir));
 
 // Tasks
 gulp.task('format', format);
@@ -182,11 +185,8 @@ gulp.task('build', gulp.series('bundle', build));
 gulp.task('static', static);
 gulp.task('test', test);
 gulp.task('release', gulp.series('static', 'build', 'test', release));
-gulp.task('default', gulp.series('build'));
 gulp.task('import-licenses', importLicenses);
 gulp.task('import-languages', importLanguages);
 gulp.task('import', gulp.parallel('import-languages', 'import-licenses'));
 
-// Functions
-const readSchema = (path) => JSON.parse(fs.readFileSync(path));
-validator.setLoggingFunction(()=>{});
+gulp.task('default', gulp.series('build'));

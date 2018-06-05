@@ -13,6 +13,6 @@ and several internal JSON Schemas:
 | Name                            | Description                                          |
 |---------------------------------|------------------------------------------------------|
 | [`schemaver`](semver.json)      | The core schema that implements versioning mechanism |
-| [`collection`](collection.json) | References to schemas with common data sets          |
+| [`collection`](collection.json) | References to schemas with external data sets        |
 
 Each schema is described in [docs](../../docs/).

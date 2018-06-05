@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: programming language and extension",
     "description": "The set of special programming languages and extensions",
+    "type": "string",
     "oneOf": [
         {
             "$ref": "#/definitions/language"

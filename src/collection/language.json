@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: programming language and extension",
-    "description": "The set of programming languages and associated file extensions",
+    "description": "The set of programming languages names",
     "type": "string",
     "oneOf": [
         {

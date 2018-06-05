@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Licensed object",
-    "description": "The definition of the object that includes license information",
+    "description": "The set of software licenses names",
     "type": "string",
     "oneOf": [
         {
