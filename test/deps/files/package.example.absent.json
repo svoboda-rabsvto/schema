@@ -5,8 +5,7 @@
     "dependencies": [
         [
             {
-                "manager": "platform",
-                "package": "npm"
+                "manager": "platform"
             },
             {
                 "manager": "bower",

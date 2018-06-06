@@ -4,13 +4,6 @@
     "package-id": "url://url",
     "languages": [
         "Text",
-        "JSP"
-    ],
-    "extensions": [
-        ".txt",
-        ".jsp"
-    ],
-    "configs": [
-        "config.json"
+        "JSP1"
     ]
 }

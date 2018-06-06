@@ -3,12 +3,10 @@
     "$version": "1.0.0",
     "package-id": "url://url",
     "languages": [
-        "Text",
-        "JSP1"
+        "Text"
     ],
     "extensions": [
-        ".txt",
-        ".jsp"
+        ".txt"
     ],
     "configs": [
         "config.json"
