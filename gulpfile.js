@@ -18,50 +18,7 @@ var path = require('path'),
 validator.setLoggingFunction(() => { });
 
 // Path and mask config
-var config = {
-    src: {
-        dir: 'src',
-        mask: 'src/**/*.json'
-    },
-    template: {
-        linguist: "src/template/language.linguist.json",
-        spdx: "src/template/license.spdx.json"
-    },
-    collection: {
-        dir: "src/collection/",
-        licenses: {
-            linter: "src/collection/license.linter.json",
-            spdx: "src/collection/license.spdx.json"
-        },
-        languages: {
-            linter: "src/collection/language.linter.json",
-            linguist: "src/collection/language.linguist.json"
-        }
-    },
-    schema: {
-        mask: 'src/schema/*.json',
-        ver: 'src/schema/schemaver.json',
-        collection: 'src/schema/collection.json'
-    },
-    build: {
-        dir: 'build',
-        mask: 'build/*.json'
-    },
-    test: {
-        dir: 'test',
-        mask: 'test/**/test.json'
-    },
-    ext: {
-        linguist: 'ext/github/linguist/lib/linguist/languages.yml',
-        spdx: 'ext/spdx/license-list-data/json/licenses.json'
-    },
-    dist: {
-        dir: 'dist'
-    },
-    assets: {
-        cname: 'CNAME'
-    }
-};
+var config = require('./script/gulp/config.json')
 
 // Reformat and save all source schemas
 const format = () => gulp
