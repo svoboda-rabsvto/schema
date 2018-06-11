@@ -57,34 +57,38 @@ const static = () => gulp
     .pipe(gulp.dest(config.dist.dir));
 
 // Run tests over files in test folder
-const test = () => gulp
+const test = (done) => gulp
     .src(config.test.mask)
     .pipe(jsonData(file => {
-        const parseSchema = (path) => JSON.parse(fs.readFileSync(path));
-        const schema = parseSchema(file.path);
-        schema.tests.map(test => {
-            const data = parseSchema(test.data.$ref);
-            validator.validate(data, schema.$schema.$ref)
+        const schema = readSchema(file.path);
+        const tasks = schema.tests.map(test => {
+            const data = readSchema(test.data.$ref);
+            return validator.validate(data, schema.$schema.$ref)
                 .then(() => {
                     if (test.valid) {
-                        log(`OK: ${test.data.$ref}`);
+                        log.info(`OK: ${schema.description} ${test.description}`);
                     } else {
-                        log(`ERROR: ${test.data.$ref}`);
-                        log(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
+                        log.error(`FAIL: ${schema.description} ${test.description}`);
+                        log.error(`FILE: ${test.data.$ref}`);
+                        log.error(`MESSAGE: file is valid, but "valid" propertie is "false" in settings`);
                         process.exitCode = 1;
+                        done("JSON Schema Validation error");
                     }
                 })
                 .catch((error) => {
                     if (!test.valid) {
-                        log(`OK: ${test.data.$ref}`);
+                        log.info(`OK: ${schema.description} ${test.description}`);
                     } else {
-                        log(`ERROR: ${test.data.$ref}`);
-                        log(`MESSAGE: ${error.errors[0].message}`);
-                        log(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
+                        log.error(`FAIL: ${schema.description} ${test.description}`);
+                        log.error(`FILE: ${test.data.$ref}`);
+                        log.error(`MESSAGE: ${error.errors[0].message}`);
+                        log.error(`SCHEMA PATH: ${error.errors[0].schemaPath}`);
                         process.exitCode = 1;
+                        done(error);
                     }
                 });
         });
+        return Promise.all(tasks);
     }));
 
 // Build and release (copy to dist) current version

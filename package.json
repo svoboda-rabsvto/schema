@@ -7,8 +7,6 @@
     "build": "gulp build",
     "test": "gulp test",
     "licensee": "./node_modules/licensee/licensee --errors-only || true",
-    "import-languages": "gulp import-languages",
-    "import-licenses": "gulp import-licenses",
     "import": "gulp import",
     "release": "gulp release"
   },
