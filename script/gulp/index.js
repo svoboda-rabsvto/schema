@@ -1,5 +1,7 @@
+// Shared conffguration
 const cfg = require('./config.json');
 
+// Shared node modules
 const amd = {
     fs: require('fs'),
     del: require('del'),
@@ -16,14 +18,17 @@ const amd = {
     jsonSchemaRemote: require('json-schema-remote'),
 };
 
-amd.jsonSchemaRemote.setLoggingFunction(() => { });
+// Disable logging
+// amd.jsonSchemaRemote.setLoggingFunction(() => { });
 
+// Shared functions
 const fnc = {
     readJson: (path) => JSON.parse(amd.fs.readFileSync(path)),
     readYaml: (path) => amd.yaml.safeLoad(amd.fs.readFileSync(path)),
     jsonToBuffer: (json) => Buffer.from(JSON.stringify(json), 'utf8'),
 };
 
+// Exported shared config, modules and functons
 exports = module.exports = {
     cfg: cfg,
     amd: amd,
