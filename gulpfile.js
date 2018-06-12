@@ -19,3 +19,7 @@ gulp.task('default', gulp.series(
     'build',
     'release'
 ));
+gulp.task('release', gulp.series('release', 'test-release'));
+gulp.task('validate', gulp.series('import', 'validate'));
+gulp.task('lint', gulp.series('lint', 'test-web'));
+gulp.task('build', gulp.series('validate', 'lint', 'build', 'test-build'));

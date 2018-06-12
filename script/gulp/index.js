@@ -10,6 +10,7 @@ const amd = {
     yaml: require('js-yaml'),
     eslint: require('gulp-eslint'),
     gulp: require('gulp'),
+    glob: require('glob'),
     hubRegistry: require('gulp-hub'),
     jsonData: require('gulp-data'),
     jsonFormat: require('gulp-json-format'),
@@ -19,7 +20,7 @@ const amd = {
 };
 
 // Disable logging
-// amd.jsonSchemaRemote.setLoggingFunction(() => { });
+amd.jsonSchemaRemote.setLoggingFunction(amd.log.info);
 
 // Shared functions
 const fnc = {

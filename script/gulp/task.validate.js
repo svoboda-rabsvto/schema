@@ -28,6 +28,7 @@ const validateCollection = () => gulp
         verbose: true,
     }));
 
+// Tasks
 gulp.task('validate-core', validateCore);
 gulp.task('validate-collection', validateCollection);
 gulp.task('validate', gulp.parallel('validate-core', 'validate-collection'));

@@ -22,6 +22,7 @@ const lintJson = () => gulp
     .pipe(jsonFormat(4))
     .pipe(gulp.dest(config.src.dir));
 
+// Tasks
 gulp.task('lint-js', lintJs);
 gulp.task('lint-json', lintJson);
 gulp.task('lint', gulp.parallel('lint-js', 'lint-json'));

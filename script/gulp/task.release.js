@@ -26,6 +26,7 @@ const createRelease = () => gulp
         return path.join(config.release.dir, version);
     }));
 
+// Tasks
 gulp.task('static', copyStatic);
 gulp.task('create-release', createRelease);
 gulp.task('release', gulp.parallel('static', 'create-release'));

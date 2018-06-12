@@ -53,6 +53,7 @@ const importLanguages = () => gulp
     .pipe(jsonFormat(4))
     .pipe(gulp.dest(config.collection.dir));
 
+// Tasks
 gulp.task('import-licenses', importLicenses);
 gulp.task('import-languages', importLanguages);
 gulp.task('import', gulp.parallel('import-licenses', 'import-languages'));

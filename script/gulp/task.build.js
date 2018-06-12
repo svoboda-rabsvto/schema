@@ -24,6 +24,7 @@ const createBuild = () => gulp
     ])
     .pipe(gulp.dest(config.build.dir));
 
+// Tasks
 gulp.task('bundle', bundle);
 gulp.task('create-build', createBuild);
 gulp.task('build', gulp.series('bundle', 'create-build'));
