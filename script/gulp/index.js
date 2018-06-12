@@ -2,6 +2,7 @@ const cfg = require('./config.json');
 
 const amd = {
     fs: require('fs'),
+    del: require('del'),
     path: require('path'),
     log: require('fancy-log'),
     yaml: require('js-yaml'),

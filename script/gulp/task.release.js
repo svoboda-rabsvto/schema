@@ -14,16 +14,16 @@ const readJson = core.fnc.readJson;
 // Copy all static assets to release
 const copyStatic = () => gulp
     .src(config.assets.cname)
-    .pipe(gulp.dest(config.dist.dir));
+    .pipe(gulp.dest(config.release.dir));
 
 // Copy to release all schemas and update root
 const createRelease = () => gulp
     .src(config.build.mask)
-    .pipe(gulp.dest(config.dist.dir))
+    .pipe(gulp.dest(config.release.dir))
     .pipe(gulp.dest((file) => {
         let content = readJson(file.path);
         let version = content.$version;
-        return path.join(config.dist.dir, version);
+        return path.join(config.release.dir, version);
     }));
 
 gulp.task('static', copyStatic);
