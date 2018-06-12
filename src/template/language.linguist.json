@@ -13,7 +13,9 @@
             "title": "Language",
             "description": "The programming language name",
             "type": "string",
-            "oneOf": [{}]
+            "oneOf": [
+                {}
+            ]
         }
     },
     "additionalItems": false

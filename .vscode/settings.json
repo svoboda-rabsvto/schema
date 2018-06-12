@@ -1,0 +1,6 @@
+{
+    "eslint.alwaysShowStatus": true,
+    "eslint.provideLintTask": true,
+    "gulp.autoDetect": "on",
+    "javascript.validate.enable": false
+}

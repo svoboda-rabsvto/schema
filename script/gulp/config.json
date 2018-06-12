@@ -1,7 +1,9 @@
 {
     "src": {
         "dir": "src",
-        "mask": "src/**/*.json"
+        "mask": "src/**/*.json",
+        "js": "**/*.js",
+        "exclude": "!**/node_modules/**"
     },
     "template": {
         "linguist": "src/template/language.linguist.json",
@@ -9,6 +11,7 @@
     },
     "collection": {
         "dir": "src/collection/",
+        "mask": "src/collection/*.json",
         "licenses": {
             "linter": "src/collection/license.linter.json",
             "spdx": "src/collection/license.spdx.json"
@@ -21,6 +24,7 @@
     "schema": {
         "mask": "src/schema/*.json",
         "ver": "src/schema/schemaver.json",
+        "draft04": "src/collection/draft-04.json",
         "collection": "src/schema/collection.json"
     },
     "build": {

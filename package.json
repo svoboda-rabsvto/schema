@@ -1,11 +1,13 @@
 {
   "name": "linterhub.schema",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "JSON schemas for linterhub",
   "scripts": {
     "gulp": "./node_modules/gulp/bin/gulp.js",
+    "eslint": "./node_modules/.bin/eslint",
     "build": "gulp build",
     "test": "gulp test",
+    "lint": "gulp lint",
     "licensee": "./node_modules/licensee/licensee --errors-only || true",
     "import": "gulp import",
     "release": "gulp release"
@@ -18,10 +20,14 @@
   "license": "MIT",
   "homepage": "https://schema.linterhub.com",
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
     "fancy-log": "^1.3.2",
     "fs-finder": "^1.8.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-data": "^1.3.1",
+    "gulp-eslint": "^4.0.2",
+    "gulp-hub": "^0.8.0",
     "gulp-json-format": "^2.0.0",
     "gulp-json-schema": "^1.0.0",
     "gulp-jsonschema-bundle": "0.0.3",

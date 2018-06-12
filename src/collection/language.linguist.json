@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "Collection: programming language and extension",
     "description": "The set of programming languages and associated file extensions imported from linguist project",
+    "type": "string",
     "oneOf": [
         {
             "$ref": "#/definitions/language"
@@ -9,8 +10,9 @@
     ],
     "definitions": {
         "language": {
-            "type": "string",
+            "title": "Language",
             "description": "The programming language name",
+            "type": "string",
             "oneOf": [
                 {
                     "enum": [
@@ -4808,5 +4810,6 @@
                 }
             ]
         }
-    }
+    },
+    "additionalItems": false
 }
