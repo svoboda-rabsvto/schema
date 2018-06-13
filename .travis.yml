@@ -7,11 +7,16 @@ git:
   submodules: false
 before_install:
   - git submodule update --init
-install:
+before_install:
   - npm install
+install:
+  - npm install @semantic-release/exec 
+  - npm install @semantic-release/git 
+  - npm install @semantic-release/changelog 
+  - npm install travis-deploy-once 
 script:
   - npm run build
-  - npm run release
+  - travis-deploy-once "npm run semantic-release"
 deploy:
   provider: pages
   skip-cleanup: true

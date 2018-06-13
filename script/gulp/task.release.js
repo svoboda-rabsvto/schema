@@ -7,9 +7,13 @@ const core = global.lhcore;
 const gulp = core.amd.gulp;
 const path = core.amd.path;
 const config = core.cfg;
+const jsonData = core.amd.jsonData;
+const jsonFormat = core.amd.jsonFormat;
 
 // Externall functions as aliases
 const readJson = core.fnc.readJson;
+const nextRelease = core.fnc.nextRelease;
+const jsonToBuffer = core.fnc.jsonToBuffer;
 
 // Copy all static assets to release
 const copyStatic = () => gulp
@@ -19,6 +23,13 @@ const copyStatic = () => gulp
 // Copy to release all schemas and update root
 const createRelease = () => gulp
     .src(config.build.mask)
+    .pipe(jsonData((file) => {
+        let json = readJson(file.path);
+        json.$version = nextRelease !== '1.0.0' ? nextRelease : json.$version;
+        file.contents = jsonToBuffer(json);
+        return file;
+    }))
+    .pipe(jsonFormat(4))
     .pipe(gulp.dest(config.release.dir))
     .pipe(gulp.dest((file) => {
         let content = readJson(file.path);

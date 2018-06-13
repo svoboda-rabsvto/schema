@@ -13,6 +13,7 @@ const JsonSchemaValidator = core.amd.jsonSchemaValidator;
 // External functions as aliases
 const readJson = core.fnc.readJson;
 const validator = new JsonSchemaValidator();
+
 // If result of test is true
 const testTrue = (test, schema, done) => {
     if (test.valid) {

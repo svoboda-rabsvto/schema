@@ -13,6 +13,7 @@ const amd = {
     gulp: require('gulp'),
     glob: require('glob'),
     hubRegistry: require('gulp-hub'),
+    argv: require('yargs').argv,
     jsonData: require('gulp-data'),
     jsonFormat: require('gulp-json-format'),
     jsonSchema: require('gulp-json-schema'),
@@ -29,6 +30,8 @@ const fnc = {
     readJson: (path) => JSON.parse(amd.fs.readFileSync(path)),
     readYaml: (path) => amd.yaml.safeLoad(amd.fs.readFileSync(path)),
     jsonToBuffer: (json) => Buffer.from(JSON.stringify(json), 'utf8'),
+    nextRelease: typeof amd.argv.nextRelease !== 'undefined' ?
+                            amd.argv.nextRelease : '1.0.0',
 };
 
 // Exported shared config, modules and functons
