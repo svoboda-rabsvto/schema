@@ -1,13 +1,13 @@
 {
     "$schema": "https://schema.linterhub.com/schemaver.json",
     "$version": "1.0.0",
-    "id": "https://schema.linterhub.com/package.json",
+    "$id": "https://schema.linterhub.com/package.json",
     "title": "Package meta-information",
     "description": "The schema of package meta information",
     "type": "object",
     "properties": {
-        "id": {
-            "title": "Id",
+        "package": {
+            "title": "Package",
             "description": "The package unique identifier in URI form which points to current version of package file",
             "type": "string",
             "format": "uri"
@@ -45,9 +45,8 @@
         }
     },
     "required": [
-        "id",
+        "package",
         "name",
         "license"
-    ],
-    "additionalProperties": true
+    ]
 }

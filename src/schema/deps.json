@@ -1,13 +1,13 @@
 {
     "$schema": "https://schema.linterhub.com/schemaver.json",
     "$version": "1.0.0",
-    "id": "https://schema.linterhub.com/deps.json",
+    "$id": "https://schema.linterhub.com/deps.json",
     "title": "Package dependencies",
     "description": "The schema of dependencies that extends package",
     "type": "object",
     "properties": {
-        "package-id": {
-            "title": "Id",
+        "package": {
+            "title": "Package",
             "description": "The package unique identifier in URI form which points to current version of package file",
             "type": "string",
             "format": "uri"
@@ -24,10 +24,9 @@
         }
     },
     "required": [
-        "package-id",
+        "package",
         "dependencies"
     ],
-    "additionalItems": false,
     "definitions": {
         "dependency": {
             "title": "Dependency",

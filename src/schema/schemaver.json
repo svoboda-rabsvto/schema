@@ -1,13 +1,13 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema",
+    "$schema": "http://json-schema.org/draft-06/schema#",
     "$version": "1.0.0",
-    "id": "https://schema.linterhub.com/schemaver.json",
+    "$id": "https://schema.linterhub.com/schemaver.json",
     "title": "Versioned Schema",
     "description": "The meta-schema of versioned JSON schema",
     "type": "object",
     "allOf": [
         {
-            "$ref": "http://json-schema.org/draft-04/schema"
+            "$ref": "http://json-schema.org/draft-06/schema#"
         },
         {
             "properties": {

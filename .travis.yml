@@ -10,11 +10,12 @@ before_install:
 install:
   - npm install
 script:
+  - npm run build
   - npm run release
 deploy:
   provider: pages
   skip-cleanup: true
-  keep-history: false
+  keep-history: true
   github_token: $GITHUB_TOKEN
   local-dir: dist
   on:
