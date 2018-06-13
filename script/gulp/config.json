@@ -24,7 +24,7 @@
     "schema": {
         "mask": "src/schema/*.json",
         "ver": "src/schema/schemaver.json",
-        "draft04": "src/collection/draft-04.json",
+        "draft": "src/collection/draft-06.json",
         "collection": "src/schema/collection.json"
     },
     "build": {
@@ -45,5 +45,8 @@
     },
     "assets": {
         "cname": "CNAME"
+    },
+    "node": {
+        "dir": "node_modules"
     }
 }

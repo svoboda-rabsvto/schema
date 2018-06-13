@@ -22,7 +22,7 @@ const validateCore = () => gulp
 const validateCollection = () => gulp
     .src(config.collection.mask)
     .pipe(jsonSchema({
-        schema: config.schema.draft04,
+        schema: config.schema.draft,
         loadMissingSchemas: true,
         checkRecursive: true,
         verbose: true,
