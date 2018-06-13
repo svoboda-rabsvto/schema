@@ -18,7 +18,18 @@ const cleanRelease = () => del([
     config.release.dir,
 ]);
 
+// Cleanup node
+const cleanNode = () => del([
+    config.node.dir,
+]);
+
 // Tasks
 gulp.task('clean-build', cleanBuild);
 gulp.task('clean-release', cleanRelease);
-gulp.task('clean', gulp.parallel('clean-build', 'clean-release'));
+gulp.task('clean-node', cleanNode);
+
+gulp.task('clean', gulp.parallel(
+    'clean-build',
+    'clean-release',
+    'clean-node'
+));
