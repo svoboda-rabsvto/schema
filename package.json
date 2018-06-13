@@ -71,7 +71,7 @@
       {
         "path": "@semantic-release/github",
         "assets": [
-          "build/*.json"
+          "dist/*.json"
         ]
       }
     ]
