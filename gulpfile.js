@@ -19,6 +19,7 @@ gulp.task('default', gulp.series(
     'build',
     'release'
 ));
+gulp.task('before-commit', gulp.series('pull-submodules'));
 gulp.task('release', gulp.series('release', 'test-release'));
 gulp.task('validate', gulp.series('import', 'validate'));
 gulp.task('lint', gulp.series('lint', 'test-web'));

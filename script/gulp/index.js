@@ -7,6 +7,7 @@ const amd = {
     del: require('del'),
     path: require('path'),
     log: require('fancy-log'),
+    git: require('gulp-git'),
     yaml: require('js-yaml'),
     eslint: require('gulp-eslint'),
     gulp: require('gulp'),
