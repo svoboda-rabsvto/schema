@@ -18,6 +18,7 @@ const amd = {
     jsonSchema: require('gulp-json-schema'),
     jsonSchemaBundle: require('gulp-jsonschema-bundle'),
     jsonSchemaRemote: require('json-schema-remote'),
+    jsonSchemaValidator: require('jsonschema').Validator,
 };
 
 // Disable logging
